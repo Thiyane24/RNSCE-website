@@ -1,0 +1,295 @@
+/* ===== Base Styles ===== */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #f5f5f5;
+    --dark-gray: #333333;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--black);
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+/* ===== Typography ===== */
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--black);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    margin-bottom: 1.5rem;
+}
+
+/* ===== Layout ===== */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--white);
+    width: 90%;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+/* ===== About Section ===== */
+.about-section {
+    background-color: var(--gray);
+    text-align: center;
+}
+
+/* ===== Product Grid ===== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.product-card {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+    background: var(--white);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.product-image {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    transition: var(--transition);
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.03);
+}
+
+.product-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+}
+
+.product-price {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--black);
+    font-size: 1.1rem;
+}
+
+/* ===== Contact Form ===== */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--dark-gray);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--black);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+}
+
+.form-textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-button:hover {
+    background-color: var(--dark-gray);
+}
+
+/* Form Validation */
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.form-input.error,
+.form-textarea.error {
+    border-color: #dc3545;
+}
+
+.form-input.error + .error-message,
+.form-textarea.error + .error-message {
+    display: block;
+}
+
+/* ===== Footer ===== */
+.footer {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-link {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    opacity: 0.8;
+}
+
+.copyright {
+    font-size: 0.875rem;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+    section {
+        padding: 3rem 0;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 80vh;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-input,
+    .form-textarea {
+        padding: 0.75rem;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
