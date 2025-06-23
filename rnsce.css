@@ -24,7 +24,7 @@
     /* Colors */
     --color-primary: #ffffff;  /* Earthy brown */
     --color-secondary: #3a3a3a; /* Dark gray */
-    --color-accent: #ffffff;    /* Gold accent */
+    --color-accent: #0e0e0d;    /* Gold accent */
     --color-text: #f0f0f0;
     --color-text-secondary: #b0b0b0;
     --color-bg: #121212;
@@ -40,7 +40,7 @@
     --color-secondary: #d9c7b8; /* Warm beige */
     --color-accent: #000000;    /* Darker gold */
     --color-text: #ffffff;
-    --color-text-secondary: #000000;
+    --color-text-secondary: #555;
     --color-bg: #f9f5f0;       /* Cream background */
     --color-card: #fff;
     --color-form: #f5f5f5;
@@ -85,7 +85,7 @@ a {
 }
 
 a:hover {
-    color: var(--color-accent);
+    color: var(--color-primary);
 }
 
 img {
@@ -392,7 +392,7 @@ img {
 }
 
 .submit-button:hover {
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
     transform: translateY(-2px);
 }
 
