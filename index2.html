@@ -30,32 +30,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome (for theme toggle icons) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body data-theme="dark">
+<body>
     <!-- Header Section -->
     <header class="header">
         <div class="header-container">
             <div class="logo">
                 <a href="index2.html">
-                    <img src="Copilot_20250622_214646.webp" alt="RNSCE Logo" width="100" height="40">
+                    <img src="Copilot_20250622_214646.webp" alt="RNSCE Logo">
                 </a>
-            </div>
-              
-            <div class="theme-toggle-container">
-                <i class="fas fa-moon theme-icon"></i>
-                <label class="theme-toggle">
-                    <input type="checkbox" id="theme-toggle">
-                    <span class="theme-slider"></span>
-                </label>
-                <i class="fas fa-sun theme-icon"></i>
             </div>
             
             <nav class="nav">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="#us" class="nav-link">About Us</a></li>
                     <li class="nav-item"><a href="#products" class="nav-link">Products</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></li>
                 </ul>
@@ -76,16 +66,6 @@
                 <a href="#products" class="cta-button">Explore Collection</a>
             </div>
         </section>
-
-        <!-- About Us Section -->
-        <!-- <section id="us" class="section about-section"> 
-            <div class="container">
-                <h2 class="section-title">What is RNSCE?</h2>
-                <p class="section-text">RNSCE (Renaissance) – Redefining Local Fashion with Timeless Vision. Born in the heart of Mozambique, RNSCE is more than just a clothing brand — it's a cultural rebirth. Inspired by the boldness of renaissance ideals and the vibrancy of African creativity, RNSCE merges classic aesthetics with modern streetwear to create garments that empower, inspire, and express identity.</p>
-                <p class="section-text">Each piece is designed with purpose — from the stitch to the story — reflecting values of self-expression, local pride, and innovation. Whether it's a casual tee, a statement hoodie, or limited-edition pieces, RNSCE transforms everyday fashion into wearable art.</p>
-                <p class="section-text">Crafted locally. Designed for global impact. Worn by those who lead with vision.</p>
-            </div>
-        </section> -->
 
         <!-- Products Section -->
         <section id="products" class="section products-section">
@@ -242,31 +222,6 @@
     <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Theme Toggle Functionality
-            const themeToggle = document.getElementById('theme-toggle');
-            const body = document.body;
-            
-            // Check for saved theme preference or use preferred color scheme
-            const savedTheme = localStorage.getItem('theme') || 
-                             (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-            
-            // Apply the saved theme
-            if (savedTheme === 'light') {
-                body.setAttribute('data-theme', 'light');
-                themeToggle.checked = true;
-            }
-            
-            // Theme toggle event listener
-            themeToggle.addEventListener('change', function() {
-                if (this.checked) {
-                    body.setAttribute('data-theme', 'light');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    body.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-            
             // Form validation
             const form = document.getElementById('secure-form');
             if (form) {
