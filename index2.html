@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="RNSCE - Mozambican fashion brand merging renaissance ideals with African creativity">
@@ -22,8 +21,42 @@
     <link rel="icon" type="image/png" sizes="32x32" href="Copilot_20250622_231318.webp">
     <link rel="icon" type="image/png" sizes="16x16" href="Copilot_20250622_231318.webp">
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'playfair': ['"Playfair Display"', 'serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'dark-black': '#121212',
+                        'darker-gray': '#1a1a1a',
+                        'dark-gray': '#2d2d2d',
+                        'medium-gray': '#444444',
+                        'light-gray': '#e0e0e0',
+                        'gold': '#ffffff',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,146 +64,210 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .underline-accent {
+                position: relative;
+            }
+            .underline-accent::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: theme('colors.gold');
+                transition: width 0.3s ease;
+            }
+            .underline-accent:hover::after {
+                width: 100%;
+            }
+            .error {
+                @apply border-red-500;
+            }
+            .error-message {
+                @apply text-red-500 text-sm mt-1 hidden;
+            }
+            input:invalid + .error-message,
+            textarea:invalid + .error-message {
+                @apply block;
+            }
+        }
+    </style>
 </head>
 
-<body>
-    <!-- Header Section -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <a href="index2.html">
-                    <img src="Copilot_20250622_214646.webp" alt="RNSCE Logo">
+<body class="font-poppins bg-black text-white">
+    <!-- Header Section with relative positioning -->
+    <header class="relative w-full bg-dark-black z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-5 flex flex-col md:flex-row justify-between items-center">
+            <div class="logo mb-4 md:mb-0">
+                <a href="index2.html" class="flex items-center">
+                    <img src="Copilot_20250622_214646.webp" alt="RNSCE Logo" class="h-12 filter brightness-0 invert">
                 </a>
             </div>
             
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#products" class="nav-link">Products</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></li>
+            <nav class="w-full md:w-auto">
+                <ul class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
+                    <li><a href="#products" class="underline-accent font-playfair font-semibold text-lg">Products</a></li>
+                    <li><a href="#contact" class="underline-accent font-playfair font-semibold text-lg">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="main-content">
+    <main>
         <!-- Hero Section -->
-        <section class="hero">
-            <picture>
-                <source srcset="" media="(max-width: 768px)">
-                <img src="ChatGPT Image 22_06_2025, 22_48_51.webp" alt="RNSCE fashion showcase" width="1920" height="1080" loading="eager" class="hero-image">
-            </picture>
-            <div class="hero-content">
-                <h1 class="hero-title">The Renaissance of African Fashion</h1>
-                <p class="hero-subtitle">Where Mozambican heritage meets contemporary design. RNSCE isn't just clothing - it's a movement celebrating the rebirth of African creativity through visionary craftsmanship.</p>
-                <a href="#products" class="cta-button">Explore Collection</a>
+        <section class="relative h-screen">
+            <img src="ChatGPT Image 22_06_2025, 22_48_51.webp" alt="RNSCE fashion showcase" 
+                 class="absolute inset-0 w-full h-full object-cover opacity-70" 
+                 loading="eager">
+            
+            <div class="container mx-auto px-4 h-full flex items-center">
+                <div class="max-w-2xl bg-black bg-opacity-70 p-8 rounded-lg backdrop-blur-sm">
+                    <h1 class="text-4xl md:text-6xl font-playfair font-bold mb-6 text-gold text-shadow">
+                        The Renaissance of African Fashion
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8">
+                        Where Mozambican heritage meets contemporary design. RNSCE isn't just clothing - it's a movement celebrating the rebirth of African creativity through visionary craftsmanship.
+                    </p>
+                    <a href="#products" 
+                       class="inline-block bg-gold text-black px-8 py-3 rounded font-semibold uppercase tracking-wider hover:bg-transparent hover:text-gold hover:border-gold border-2 border-transparent transition-all duration-300 transform hover:-translate-y-1">
+                        Explore Collection
+                    </a>
+                </div>
             </div>
         </section>
 
         <!-- Products Section -->
-        <section id="products" class="section products-section">
-            <div class="container">
-                <h2 class="section-title">Discover the movement. Wear the renaissance.</h2>
-                <div class="product-grid">
+        <section id="products" class="py-20 bg-black">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-center mb-16 relative">
+                    Discover the movement. Wear the renaissance.
+
+                </h2>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Product 1 -->
-                    <article class="product-card">
-                        <img src="assets/product1.webp" alt="RNSCE Signature T-Shirt" loading="lazy" class="product-image">
-                        <figcaption class="product-info">
-                            <h3 class="product-name">Signature T-Shirt</h3>
-                            <p class="product-price">1,500 MZN</p>
-                        </figcaption>
+                    <article class="bg-darker-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl border border-medium-gray transition-all duration-300 hover:-translate-y-2">
+                        <img src="assets/product1.webp" alt="RNSCE Signature T-Shirt" loading="lazy" 
+                             class="w-full h-80 object-cover border-b border-medium-gray">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Signature T-Shirt</h3>
+                            <p class="text-gold font-medium">1,500 MZN</p>
+                        </div>
                     </article>
                     
                     <!-- Product 2 -->
-                    <article class="product-card">
-                        <img src="assets/product2.webp" alt="RNSCE Classic Hoodie" loading="lazy" class="product-image">
-                        <figcaption class="product-info">
-                            <h3 class="product-name">Classic Hoodie</h3>
-                            <p class="product-price">3,200 MZN</p>
-                        </figcaption>
+                    <article class="bg-darker-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl border border-medium-gray transition-all duration-300 hover:-translate-y-2">
+                        <img src="assets/product2.webp" alt="RNSCE Classic Hoodie" loading="lazy" 
+                             class="w-full h-80 object-cover border-b border-medium-gray">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Classic Hoodie</h3>
+                            <p class="text-gold font-medium">3,200 MZN</p>
+                        </div>
                     </article>
                     
                     <!-- Product 3 -->
-                    <article class="product-card">
-                        <img src="assets/product3.webp" alt="RNSCE Statement Jacket" loading="lazy" class="product-image">
-                        <figcaption class="product-info">
-                            <h3 class="product-name">Statement Jacket</h3>
-                            <p class="product-price">4,500 MZN</p>
-                        </figcaption>
+                    <article class="bg-darker-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl border border-medium-gray transition-all duration-300 hover:-translate-y-2">
+                        <img src="assets/product3.webp" alt="RNSCE Statement Jacket" loading="lazy" 
+                             class="w-full h-80 object-cover border-b border-medium-gray">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Statement Jacket</h3>
+                            <p class="text-gold font-medium">4,500 MZN</p>
+                        </div>
                     </article>
                     
                     <!-- Product 4 -->
-                    <article class="product-card">
-                        <img src="assets/product4.webp" alt="RNSCE Logo Cap" loading="lazy" class="product-image">
-                        <figcaption class="product-info">
-                            <h3 class="product-name">Logo Cap</h3>
-                            <p class="product-price">1,200 MZN</p>
-                        </figcaption>
+                    <article class="bg-darker-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl border border-medium-gray transition-all duration-300 hover:-translate-y-2">
+                        <img src="assets/product4.webp" alt="RNSCE Logo Cap" loading="lazy" 
+                             class="w-full h-80 object-cover border-b border-medium-gray">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Logo Cap</h3>
+                            <p class="text-gold font-medium">1,200 MZN</p>
+                        </div>
                     </article>
                     
                     <!-- Product 5 -->
-                    <article class="product-card">
-                        <img src="assets/product5.webp" alt="RNSCE Artist Series" loading="lazy" class="product-image">
-                        <figcaption class="product-info">
-                            <h3 class="product-name">Artist Series</h3>
-                            <p class="product-price">2,800 MZN</p>
-                        </figcaption>
+                    <article class="bg-darker-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl border border-medium-gray transition-all duration-300 hover:-translate-y-2">
+                        <img src="assets/product5.webp" alt="RNSCE Artist Series" loading="lazy" 
+                             class="w-full h-80 object-cover border-b border-medium-gray">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Artist Series</h3>
+                            <p class="text-gold font-medium">2,800 MZN</p>
+                        </div>
                     </article>
                     
                     <!-- Product 6 -->
-                    <article class="product-card">
-                        <img src="assets/product6.webp" alt="RNSCE Essential Pants" loading="lazy" class="product-image">
-                        <figcaption class="product-info">
-                            <h3 class="product-name">Essential Pants</h3>
-                            <p class="product-price">2,500 MZN</p>
-                        </figcaption>
+                    <article class="bg-darker-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl border border-medium-gray transition-all duration-300 hover:-translate-y-2">
+                        <img src="assets/product6.webp" alt="RNSCE Essential Pants" loading="lazy" 
+                             class="w-full h-80 object-cover border-b border-medium-gray">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Essential Pants</h3>
+                            <p class="text-gold font-medium">2,500 MZN</p>
+                        </div>
                     </article>
                     
                     <!-- Product 7 -->
-                    <article class="product-card">
-                        <img src="assets/product7.webp" alt="RNSCE Heritage Collection" loading="lazy" class="product-image">
-                        <figcaption class="product-info">
-                            <h3 class="product-name">Heritage Collection</h3>
-                            <p class="product-price">3,800 MZN</p>
-                        </figcaption>
+                    <article class="bg-darker-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl border border-medium-gray transition-all duration-300 hover:-translate-y-2">
+                        <img src="assets/product7.webp" alt="RNSCE Heritage Collection" loading="lazy" 
+                             class="w-full h-80 object-cover border-b border-medium-gray">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Heritage Collection</h3>
+                            <p class="text-gold font-medium">3,800 MZN</p>
+                        </div>
                     </article>
                     
                     <!-- Product 8 -->
-                    <article class="product-card">
-                        <img src="assets/product8.webp" alt="RNSCE Weekend Bag" loading="lazy" class="product-image">
-                        <figcaption class="product-info">
-                            <h3 class="product-name">Weekend Bag</h3>
-                            <p class="product-price">3,500 MZN</p>
-                        </figcaption>
+                    <article class="bg-darker-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl border border-medium-gray transition-all duration-300 hover:-translate-y-2">
+                        <img src="assets/product8.webp" alt="RNSCE Weekend Bag" loading="lazy" 
+                             class="w-full h-80 object-cover border-b border-medium-gray">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Weekend Bag</h3>
+                            <p class="text-gold font-medium">3,500 MZN</p>
+                        </div>
                     </article>
                     
                     <!-- Product 9 -->
-                    <article class="product-card">
-                        <img src="assets/product9.webp" alt="RNSCE Limited Edition" loading="lazy" class="product-image">
-                        <figcaption class="product-info">
-                            <h3 class="product-name">Limited Edition</h3>
-                            <p class="product-price">5,000 MZN</p>
-                        </figcaption>
+                    <article class="bg-darker-gray rounded-lg overflow-hidden shadow-lg hover:shadow-xl border border-medium-gray transition-all duration-300 hover:-translate-y-2">
+                        <img src="assets/product9.webp" alt="RNSCE Limited Edition" loading="lazy" 
+                             class="w-full h-80 object-cover border-b border-medium-gray">
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-semibold mb-2">Limited Edition</h3>
+                            <p class="text-gold font-medium">5,000 MZN</p>
+                        </div>
                     </article>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section contact-section">
-            <div class="container">
-                <h2 class="section-title">Contact us</h2>
-                <form class="contact-form" action="https://formsubmit.co/rnsce.info@gmail.com" method="POST" id="secure-form">
+        <section id="contact" class="py-20 bg-dark-gray">
+            <div class="container mx-auto px-4 max-w-2xl">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-center mb-16 relative">
+                    Contact us
+                    
+                </h2>
+                
+                <form class="bg-darker-gray p-8 rounded-lg shadow-lg border border-medium-gray" 
+                      action="https://formsubmit.co/rnsce.info@gmail.com" 
+                      method="POST" 
+                      id="secure-form">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_autoresponse" value="Thank you for contacting RNSCE! We'll get back to you soon.">
                     
                     <!-- Name Field -->
-                    <div class="form-group">
-                        <label for="name" class="form-label">Full Name</label>
+                    <div class="mb-6">
+                        <label for="name" class="block font-semibold mb-2">Full Name</label>
                         <input type="text" id="name" name="name" required 
-                               placeholder="Your name" class="form-input"
+                               placeholder="Your name" 
+                               class="w-full px-4 py-2 border border-medium-gray rounded bg-dark-gray focus:outline-none focus:ring-2 focus:ring-gold"
                                pattern="[A-Za-z ]{2,50}" 
                                title="Only letters and spaces (2-50 characters)"
                                maxlength="50">
@@ -178,10 +275,11 @@
                     </div>
                     
                     <!-- Email Field -->
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
+                    <div class="mb-6">
+                        <label for="email" class="block font-semibold mb-2">Email Address</label>
                         <input type="email" id="email" name="email" required 
-                               placeholder="your@email.com" class="form-input"
+                               placeholder="your@email.com" 
+                               class="w-full px-4 py-2 border border-medium-gray rounded bg-dark-gray focus:outline-none focus:ring-2 focus:ring-gold"
                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                title="Enter a valid email address"
                                maxlength="100">
@@ -189,18 +287,19 @@
                     </div>
                     
                     <!-- Message Field -->
-                    <div class="form-group">
-                        <label for="message" class="form-label">Your Message</label>
+                    <div class="mb-8">
+                        <label for="message" class="block font-semibold mb-2">Your Message</label>
                         <textarea id="message" name="message" required 
                                   placeholder="Tell us about your fashion vision" 
-                                  class="form-textarea"
+                                  class="w-full px-4 py-2 border border-medium-gray rounded bg-dark-gray focus:outline-none focus:ring-2 focus:ring-gold min-h-[150px]"
                                   minlength="10" 
                                   maxlength="1000"></textarea>
                         <span class="error-message">Message must be 10-1000 characters</span>
                     </div>
                     
                     <!-- Submit Button -->
-                    <button type="submit" class="submit-button">
+                    <button type="submit" 
+                            class="w-full bg-gold text-black py-3 rounded font-semibold uppercase tracking-wider hover:bg-opacity-90 transition-colors duration-300">
                         Send Message
                     </button>
                 </form>
@@ -209,13 +308,23 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="social-links">
-                <a href="mailto:rnsce.info@gmail.com" aria-label="Email" class="social-link">Email</a>
-                <a href="#" aria-label="Shopify" class="social-link">Shopify</a>
+    <footer class="bg-dark-black py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center">
+                <div class="social-links flex space-x-6 mb-6">
+                    <a href="mailto:rnsce.info@gmail.com" aria-label="Email" 
+                       class="text-white hover:text-gold transition-colors duration-300 text-xl">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" aria-label="Shopify" 
+                       class="text-white hover:text-gold transition-colors duration-300 text-xl">
+                        <i class="fas fa-shopping-bag"></i>
+                    </a>
+                </div>
+                <p class="text-light-gray text-sm">
+                    &copy; 2025 RNSCE. All rights reserved.
+                </p>
             </div>
-            <p class="copyright">&copy; 2025 RNSCE. All rights reserved.</p>
         </div>
     </footer>
 
@@ -226,50 +335,85 @@
             const form = document.getElementById('secure-form');
             if (form) {
                 form.addEventListener('submit', function(e) {
-                    let valid = true;
+                    let isValid = true;
                     
-                    // Validate name
-                    const name = document.getElementById('name');
-                    if (!name.checkValidity()) {
-                        name.classList.add('error');
-                        valid = false;
-                    }
+                    // Validate all fields
+                    const fields = [
+                        { id: 'name', pattern: /^[A-Za-z ]{2,50}$/ },
+                        { id: 'email', pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i },
+                        { id: 'message', minLength: 10, maxLength: 1000 }
+                    ];
                     
-                    // Validate email
-                    const email = document.getElementById('email');
-                    if (!email.checkValidity()) {
-                        email.classList.add('error');
-                        valid = false;
-                    }
+                    fields.forEach(field => {
+                        const element = document.getElementById(field.id);
+                        const errorMessage = element.nextElementSibling;
+                        
+                        if (field.pattern && !field.pattern.test(element.value)) {
+                            element.classList.add('error');
+                            errorMessage.style.display = 'block';
+                            isValid = false;
+                        } else if (field.minLength && element.value.length < field.minLength) {
+                            element.classList.add('error');
+                            errorMessage.style.display = 'block';
+                            isValid = false;
+                        } else if (field.maxLength && element.value.length > field.maxLength) {
+                            element.classList.add('error');
+                            errorMessage.style.display = 'block';
+                            isValid = false;
+                        } else {
+                            element.classList.remove('error');
+                            errorMessage.style.display = 'none';
+                        }
+                    });
                     
-                    // Validate message
-                    const message = document.getElementById('message');
-                    if (!message.checkValidity()) {
-                        message.classList.add('error');
-                        valid = false;
-                    }
-                    
-                    if (!valid) {
+                    if (!isValid) {
                         e.preventDefault();
+                        // Scroll to first error
+                        const firstError = form.querySelector('.error');
+                        if (firstError) {
+                            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
                     }
                 });
                 
-                // Remove error class when user starts typing
-                const inputs = form.querySelectorAll('input, textarea');
-                inputs.forEach(input => {
-                    input.addEventListener('input', function() {
-                        this.classList.remove('error');
+                // Real-time validation
+                ['input', 'change'].forEach(event => {
+                    form.addEventListener(event, function(e) {
+                        const target = e.target;
+                        if (target.id === 'name') {
+                            const isValid = /^[A-Za-z ]{2,50}$/.test(target.value);
+                            toggleErrorState(target, isValid);
+                        } else if (target.id === 'email') {
+                            const isValid = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i.test(target.value);
+                            toggleErrorState(target, isValid);
+                        } else if (target.id === 'message') {
+                            const isValid = target.value.length >= 10 && target.value.length <= 1000;
+                            toggleErrorState(target, isValid);
+                        }
                     });
                 });
+                
+                function toggleErrorState(element, isValid) {
+                    const errorMessage = element.nextElementSibling;
+                    if (!isValid) {
+                        element.classList.add('error');
+                        errorMessage.style.display = 'block';
+                    } else {
+                        element.classList.remove('error');
+                        errorMessage.style.display = 'none';
+                    }
+                }
             }
             
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
                     if (target) {
-                        target.scrollIntoView({
+                        window.scrollTo({
+                            top: target.offsetTop,
                             behavior: 'smooth'
                         });
                     }
